@@ -12,5 +12,34 @@
       "quick"
     ],
     "notes": "Simple test recipe"
+  },
+  {
+    "id": "fav_8fa68228",
+    "name": "Lemon-Garlic Ricotta-Free Pasta with Roasted Cherry Tomatoes",
+    "ingredients": [
+      "200 g spaghetti or linguine",
+      "1 cup cherry tomatoes, halved",
+      "2 tbsp olive oil",
+      "2 cloves garlic, minced",
+      "Zest & juice of 1 lemon",
+      "¼ cup toasted pine nuts (optional)",
+      "Handful fresh basil, torn",
+      "Salt & pepper"
+    ],
+    "instructions": [
+      "Preheat oven to 200 °C (or heat a pan). Toss tomatoes with 1 tbsp olive oil, salt, and pepper; roast 12‑15 min until blistered.",
+      "Boil pasta in salted water until al dente; reserve ½ cup pasta water.",
+      "In a skillet, heat remaining oil, sauté garlic 30 s, add lemon zest & juice.",
+      "Drain pasta, add to skillet with a splash of pasta water, toss to coat.",
+      "Stir in roasted tomatoes, fresh basil, and toasted pine nuts; season with salt and pepper and serve."
+    ],
+    "tags": [
+      "vegetarian",
+      "Italian",
+      "dairy-free",
+      "quick",
+      "under 45 minutes"
+    ],
+    "notes": "Suitable for lactose allergy."
   }
 ]

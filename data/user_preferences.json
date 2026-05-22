@@ -5,6 +5,9 @@
   ],
   "disliked_ingredients": [],
   "preferred_difficulty": null,
-  "preferred_cooking_time": null,
-  "notes": []
+  "preferred_cooking_time": "under 45 minutes",
+  "notes": [],
+  "allergies": [
+    "lactose"
+  ]
 }

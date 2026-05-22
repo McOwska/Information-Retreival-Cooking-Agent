@@ -343,19 +343,34 @@ def run_tool(name: str, args: Dict[str, Any]) -> str:
         if not discovered:
             return "No skills installed.\nAdd skill folders with SKILL.md to the .skills directory."
         return "\n\n".join([f"{s['name']}: {s['description']}" for s in discovered])
-    
-    if name == "get_user_preferences":
-        return get_user_preferences()
+
+    # MEMORY 
     if name == "update_user_preferences":
-        return update_user_preferences(args["new_preferences"])
+        return json.dumps(
+            update_user_preferences(args["new_preferences"]),
+            ensure_ascii=False,
+        )
+
     if name == "get_favorite_recipes":
-        return get_favorite_recipes()
+        return json.dumps(get_favorite_recipes(), ensure_ascii=False)
+
     if name == "save_favorite_recipe":
-        return save_favorite_recipe(args["recipe"])
+        return json.dumps(
+            save_favorite_recipe(args["recipe"]),
+            ensure_ascii=False,
+        )
+
     if name == "search_favorite_recipes":
-        return search_favorite_recipes(args["query"])
+        return json.dumps(
+            search_favorite_recipes(args["query"]),
+            ensure_ascii=False,
+        )
+
     if name == "remove_favorite_recipe":
-        return remove_favorite_recipe(args["recipe_id"])
+        return json.dumps(
+            {"removed": remove_favorite_recipe(args["recipe_id"])},
+            ensure_ascii=False,
+        )
 
     return f'error: unknown tool "{name}"'
 

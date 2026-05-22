@@ -158,7 +158,7 @@ def main() -> int:
     base_url = os.getenv("BASE_URL", "").strip() or "https://api.berget.ai/v1"
     client = OpenAI(api_key=api_key, base_url=base_url)
 
-    print("Polymath — type a message and press Enter (Ctrl+C to exit).\n")
+    print("CookMate — type a message and press Enter (Ctrl+C to exit).\n")
     messages: List[Dict[str, Any]] = [{"role": "system", "content": SYSTEM_PROMPT}]
 
     while True:

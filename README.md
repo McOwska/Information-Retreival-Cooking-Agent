@@ -1,4 +1,4 @@
-# CookMate (Python)
+# CookMate
 
 CookMate is a small cooking assistant agent with lightweight local memory (preferences + favorite recipes). It’s a Python re-implementation of the TypeScript agent template in [BirgerMoell/agents](https://github.com/BirgerMoell/agents), adapted to use Berget’s OpenAI-compatible Chat Completions API with tool calling.
 

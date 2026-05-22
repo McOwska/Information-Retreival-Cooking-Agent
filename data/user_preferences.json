@@ -1,0 +1,10 @@
+{
+  "diet": "vegetarian",
+  "liked_cuisines": [
+    "Italian"
+  ],
+  "disliked_ingredients": [],
+  "preferred_difficulty": null,
+  "preferred_cooking_time": null,
+  "notes": []
+}

@@ -2,6 +2,8 @@
 
 CookMate is a small cooking assistant agent with lightweight local memory (preferences + favorite recipes). It’s a Python re-implementation of the TypeScript agent template in [BirgerMoell/agents](https://github.com/BirgerMoell/agents), with few additional features to help you with finding cooking inspirations.
 
+More detailed project description can be found in the [report](https://github.com/McOwska/Information-Retreival-Cooking-Agent/blob/main/CookMate___AI_Agent___Report.pdf).
+
 ## Setup
 
 ```bash

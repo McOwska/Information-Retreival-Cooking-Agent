@@ -1,6 +1,6 @@
 # CookMate
 
-CookMate is a small cooking assistant agent with lightweight local memory (preferences + favorite recipes). It’s a Python re-implementation of the TypeScript agent template in [BirgerMoell/agents](https://github.com/BirgerMoell/agents), adapted to use Berget’s OpenAI-compatible Chat Completions API with tool calling.
+CookMate is a small cooking assistant agent with lightweight local memory (preferences + favorite recipes). It’s a Python re-implementation of the TypeScript agent template in [BirgerMoell/agents](https://github.com/BirgerMoell/agents), with few additional features to help you with finding cooking inspirations.
 
 ## Setup
 
@@ -11,7 +11,7 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-Set `BERGET_API_KEY` (or `OPENAI_API_KEY`) in `.env`, then:
+Set `BERGET_API_KEY` (or `OPENAI_API_KEY`) in `.env` (current KEY is just an invalid example!), then:
 
 ```bash
 python3 agent.py
@@ -41,33 +41,13 @@ If you want a “fresh” agent, delete those files.
 - “Find favorites with ‘pasta’.”
 - “Remove favorite `fav_1234abcd`.”
 
-## Configuration
+## Demo
 
-Environment variables (see `.env.example`):
+A full recorded demo is available here: [DEMO_rec.mp4](./DEMO_rec.mp4).
 
-- `BERGET_API_KEY` (recommended) or `OPENAI_API_KEY`
-- `BASE_URL` (default: `https://api.berget.ai/v1`)
-- `MODEL` (default: `openai/gpt-oss-120b`)
-- `TEMPERATURE` (default: `0.7`)
-- `MAX_TOKENS` (default: `512`)
-- `SKILLS_DIR` (default: `.skills`)
+Since the responses can take some time and the video is over 3 minutes long, a screenshot is included below as a quick preview of the interaction, to save your time :).
 
-## Skills (optional)
+<img width="1505" height="937" alt="CookMate demo screenshot" src="https://github.com/user-attachments/assets/37ed0f20-acf7-4584-bbd8-69a6f84f828c" />
 
-The agent supports a local `.skills/` directory containing Agent Skills-style folders:
 
-```
-.skills/
-  example-skill/
-    SKILL.md
-    references/
-      ...
-    scripts/
-      ...
-```
 
-At startup it injects an `<available_skills>` block into the system prompt, and exposes:
-
-- `list_skills`
-- `load_skill`
-- `read_skill_file`

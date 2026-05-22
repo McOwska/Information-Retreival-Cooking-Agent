@@ -10,6 +10,15 @@ from typing import Any, Dict, Iterable, List, Literal, Optional, Tuple, TypedDic
 
 import skills
 
+from memory import (
+    get_user_preferences,
+    update_user_preferences,
+    get_favorite_recipes,
+    save_favorite_recipe,
+    search_favorite_recipes,
+    remove_favorite_recipe,
+)
+
 WORKSPACE = pathlib.Path.cwd().resolve()
 
 
@@ -155,6 +164,97 @@ TOOL_DEFINITIONS: List[ToolDef] = [
         "strict": True,
         "parameters": {"type": "object", "properties": {}, "required": [], "additionalProperties": False},
     },
+    {
+    "name": "get_user_preferences",
+    "description": "Retrieve the user's stored cooking preferences, such as diet, liked cuisines, disliked ingredients, preferred difficulty, and preferred cooking time.",
+    "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+    },
+},
+{
+    "name": "update_user_preferences",
+    "description": "Update the user's stored cooking preferences. Use this when the user states a stable food preference, dietary restriction, disliked ingredient, preferred cuisine, difficulty, cooking time, or cooking note.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "new_preferences": {
+                "type": "object",
+                "description": "A dictionary of preferences to update. Example: {'diet': 'vegetarian', 'liked_cuisines': ['Italian'], 'disliked_ingredients': ['mushrooms'], 'preferred_difficulty': 'easy', 'preferred_cooking_time': 'under 30 minutes', 'notes': ['likes cheap ingredients']}",
+            }
+        },
+        "required": ["new_preferences"],
+    },
+},
+{
+    "name": "get_favorite_recipes",
+    "description": "Retrieve all recipes saved by the user as favorites.",
+    "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+    },
+},
+{
+    "name": "save_favorite_recipe",
+    "description": "Save a recipe to the user's favorites. Use this only when the user explicitly asks to save a recipe or add it to favorites.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "recipe": {
+                "type": "object",
+                "description": "The recipe to save, including name, ingredients, instructions, tags, and notes.",
+                "properties": {
+                    "name": {"type": "string"},
+                    "ingredients": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                    },
+                    "instructions": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                    },
+                    "notes": {"type": "string"},
+                },
+                "required": ["name"],
+            }
+        },
+        "required": ["recipe"],
+    },
+},
+{
+    "name": "search_favorite_recipes",
+    "description": "Search the user's favorite recipes by keyword, ingredient, cuisine, tag, or recipe name.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "query": {
+                "type": "string",
+                "description": "Keyword or phrase to search for in the user's favorite recipes.",
+            }
+        },
+        "required": ["query"],
+    },
+},
+{
+    "name": "remove_favorite_recipe",
+    "description": "Remove a recipe from the user's favorites by recipe id.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "recipe_id": {
+                "type": "string",
+                "description": "The id of the favorite recipe to remove, for example fav_a1b2c3d4.",
+            }
+        },
+        "required": ["recipe_id"],
+    },
+},
 ]
 
 def get_chat_tools() -> List[Dict[str, Any]]:
@@ -243,6 +343,19 @@ def run_tool(name: str, args: Dict[str, Any]) -> str:
         if not discovered:
             return "No skills installed.\nAdd skill folders with SKILL.md to the .skills directory."
         return "\n\n".join([f"{s['name']}: {s['description']}" for s in discovered])
+    
+    if name == "get_user_preferences":
+        return get_user_preferences()
+    if name == "update_user_preferences":
+        return update_user_preferences(args["new_preferences"])
+    if name == "get_favorite_recipes":
+        return get_favorite_recipes()
+    if name == "save_favorite_recipe":
+        return save_favorite_recipe(args["recipe"])
+    if name == "search_favorite_recipes":
+        return search_favorite_recipes(args["query"])
+    if name == "remove_favorite_recipe":
+        return remove_favorite_recipe(args["recipe_id"])
 
     return f'error: unknown tool "{name}"'
 

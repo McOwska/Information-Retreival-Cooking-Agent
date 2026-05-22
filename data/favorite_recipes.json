@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "fav_8ebe828e",
+    "name": "Tomato pasta",
+    "ingredients": [
+      "pasta",
+      "tomatoes"
+    ],
+    "instructions": [],
+    "tags": [
+      "vegetarian",
+      "quick"
+    ],
+    "notes": "Simple test recipe"
+  }
+]
